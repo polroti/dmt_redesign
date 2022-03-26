@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class HomePage extends StatefulWidget {
+class PHomePage extends StatefulWidget {
   @override
   _HomeWidgetState createState() => _HomeWidgetState();
 }
 
-class _HomeWidgetState extends State<HomePage> {
+class _HomeWidgetState extends State<PHomePage> {
   @override
   Widget build(BuildContext context) {
     // Figma Flutter Generator HomeWidget - FRAME
@@ -34,7 +34,7 @@ class _HomeWidgetState extends State<HomePage> {
                             decoration: BoxDecoration(
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(25),
-                                topRight: const Radius.circular(25),
+                                topRight: Radius.circular(25),
                                 bottomLeft: Radius.circular(25),
                                 bottomRight: Radius.circular(25),
                               ),

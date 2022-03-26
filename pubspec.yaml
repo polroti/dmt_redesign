@@ -41,6 +41,7 @@ fonts:
     - weight: 400
 
 dependencies:
+  get: ^4.6.1
   flutter_svg: ^1.0.3
   flutter:
     sdk: flutter
