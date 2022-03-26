@@ -1,6 +1,6 @@
-# dmt_redesign
+# DMT App Redesign.
 
-A new Flutter project.
+A Redesigned app for DMT's Vehicle information app
 
 ## Getting Started
 
