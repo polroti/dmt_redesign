@@ -19,11 +19,9 @@ class _HomeWidgetState extends State<HomePage> {
             color: Theme.of(context).brightness == Brightness.dark
                 ? Colors.black
                 : Colors.white,
-            child: Stack(
-              children: [onGoingNumber()],
-            ),
+            child: onGoingNumber()),
           ),
-        ));
+        );
   }
 }
 
