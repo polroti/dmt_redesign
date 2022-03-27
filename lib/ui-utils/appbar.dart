@@ -1,33 +1,34 @@
+import 'package:dmt_redesign/ui-utils/config.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 
 var menuItems = <String>['Language', 'Theme', 'Help'];
 
 //light
 
-PreferredSizeWidget appBarLight() {
+PreferredSizeWidget appBarLight(BuildContext context) {
   return AppBar(
     toolbarHeight: 70,
     backgroundColor:
-        Get.isDarkMode ? Colors.black : const Color.fromRGBO(161, 32, 26, 1),
+         Theme.of(context).brightness == Brightness.dark  ? Colors.black : const Color.fromRGBO(161, 32, 26, 1),
     elevation: 0,
     title: const Text('Vehicle Information'),
     actions: <Widget>[
       PopupMenuButton(
-          onCanceled: () => print('cancelled'),
+         // onCanceled: () => print('cancelled'),
           onSelected: onMenuItemSelect,
           itemBuilder: (BuildContext context) {
             return menuItems.map((String choice) {
               return PopupMenuItem<String>(
                   child: Row(children: [
-                    getMenuItemIcon(choice),
+                    getMenuItemIcon(choice,context),
                     const SizedBox(
                       width: 15,
                     ),
                     Text(
                       choice.toUpperCase(),
                       style: TextStyle(
-                        color: Get.isDarkMode
+                        color: Theme.of(context).brightness == Brightness.dark 
                             ? Colors.white
                             : const Color.fromRGBO(161, 32, 26, 1),
                       ),
@@ -40,20 +41,20 @@ PreferredSizeWidget appBarLight() {
   );
 }
 
-Widget getMenuItemIcon(String choice) {
+Widget getMenuItemIcon(String choice, BuildContext context) {
   Widget icon = const Icon(Icons.abc);
   switch (choice) {
     case 'Language':
       icon = Icon(
         Icons.translate,
-        color: Get.isDarkMode
+        color:  Theme.of(context).brightness == Brightness.dark 
             ? Colors.white
             : const Color.fromRGBO(161, 32, 26, 1),
       );
       break;
 
     case 'Theme':
-      icon = Get.isDarkMode
+      icon = Theme.of(context).brightness == Brightness.dark 
           ? const Icon(Icons.light_mode, color: Colors.white)
           : const Icon(
               Icons.dark_mode,
@@ -64,7 +65,7 @@ Widget getMenuItemIcon(String choice) {
     case 'Help':
       icon = Icon(
         Icons.help,
-        color: Get.isDarkMode
+        color:  Theme.of(context).brightness == Brightness.dark 
             ? Colors.white
             : const Color.fromRGBO(161, 32, 26, 1),
       );
@@ -80,9 +81,7 @@ void onMenuItemSelect(item) {
       break;
 
     case 'Theme':
-      Get.isDarkMode
-          ? Get.changeTheme(ThemeData.light())
-          : Get.changeTheme(ThemeData.dark());
+     currentTheme.switchTheme();
       break;
 
     case 'Help':
