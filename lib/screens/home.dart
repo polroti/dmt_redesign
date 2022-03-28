@@ -13,68 +13,60 @@ class _HomeWidgetState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBarLight(context),
-        body: Center(
-          child: Container(
+      appBar: appBarLight(context),
+      body: Center(
+        child: Container(
             color: Theme.of(context).brightness == Brightness.dark
                 ? Colors.black
                 : Colors.white,
-            child: onGoingNumber()),
-          ),
-        );
+            child: onGoingNumber(context)),
+      ),
+    );
   }
 }
 
-Widget onGoingNumber() {
+Widget onGoingNumber(BuildContext context) {
+  return Column(
+    mainAxisSize: MainAxisSize.max,
+    children: [
+      Expanded(
+          child: Padding(
+        padding: const EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 36),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [ongoingNumberWidget(context), ongoingNumberWidget(context),ongoingNumberWidget(context),Text('punda')],
+              ),
+            ))
+          ],
+        ),
+      ))
+    ],
+  );
+
   // Figma Flutter Generator Group28Widget - GROUP
-  return Container(
-      width: 321,
-      height: 140,
-      child: Stack(children: <Widget>[
-        Positioned(
-            top: 0,
-            left: 0,
-            child: Container(
-                width: 321,
-                height: 140,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                  ),
-                  color: Color.fromRGBO(255, 255, 255, 1),
-                  border: Border.all(
-                    color: Color.fromRGBO(161, 32, 26, 1),
-                    width: 2,
-                  ),
-                ))),
-        Positioned(
-            top: 23,
-            left: 123,
-            child: Container(
-                width: 68,
-                height: 57,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/Image5.png'),
-                      fit: BoxFit.fitWidth),
-                ))),
-        Positioned(
-            top: 103,
-            left: 63,
-            child: Text(
-              'ONGOING NUMBER',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Color.fromRGBO(160, 42, 37, 1),
-                  fontFamily: 'Roboto',
-                  fontSize: 18,
-                  letterSpacing:
-                      0 /*percentages not used in flutter. defaulting to zero*/,
-                  fontWeight: FontWeight.normal,
-                  height: 1),
-            )),
-      ]));
+}
+
+Widget ongoingNumberWidget(BuildContext context) {
+  return Expanded(
+      child: Padding(
+        
+    padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 36),
+    child: Container(
+      
+        decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(25),
+      color: Theme.of(context).brightness == Brightness.dark ? const Color.fromRGBO(161, 32, 26, 1) : const Color.fromRGBO(255, 255, 255, 1),
+      border: Border.all(
+        color: Theme.of(context).brightness == Brightness.dark ? Colors.white:  const Color.fromRGBO(161, 32, 26, 1),
+        width: 2,
+      ),
+    )),
+  ));
 }
