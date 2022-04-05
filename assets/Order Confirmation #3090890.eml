@@ -1,0 +1,238 @@
+Delivered-To: dharmakumar338@gmail.com
+Received: by 2002:a17:906:85d5:0:0:0:0 with SMTP id i21csp2122440ejy;
+        Fri, 12 Nov 2021 19:53:16 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyHH/AXnkMAeDjXlf6KtJMnq9xraVkv1xrWM2kUmhBdWH+FJbo5lFsaKLLw/BNjq5cvYScs
+X-Received: by 2002:a05:6a00:21c6:b0:44c:937:fbf3 with SMTP id t6-20020a056a0021c600b0044c0937fbf3mr18518739pfj.2.1636775595859;
+        Fri, 12 Nov 2021 19:53:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636775595; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZAsFHBkjAwNr1rwQ8u92CUTf8r6lh0Ybinpyr2pNdFqxten2okBFpNDDkEMNLaTEJi
+         LGQ3iuq0JSYEV2Tg0CWxkVOLw+I34iuOWx0/eYt7DnaQqHIxuoUowkfALZgYbXw9wnMp
+         KjQcDGtUeMLLw4NagOVTkpNA8+/FKvLBXzANfjmtk8gU6wp4f8Fha2rYCFJ547gP/GCU
+         dxZWL0wOK+Svf3MHUt4lyWdEP+5YG37jZ5WugReDwr4ntpu/dbpm1MBSSuVt8CCd/QD1
+         82B/5JcOiBzgPGkhq+xPZ2Yf2mSz8ankMm3WwWalfsWB+nHyLsnV4/EHo7UlF3CxEdPk
+         tYTg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:to:mime-version:subject:message-id:from
+         :date:dkim-signature:dkim-signature;
+        bh=ibKU5IQJQodTbSryxbgbTqOJ27e2JYzHIOlhpgozGUw=;
+        b=LMeMmmHJCm+qrGgE6nob5T8+r6NJ732TlgOaoyttQd3b+aXNGoojj56pc8YS+pA7bg
+         ftWRYUuxlhZSoo5QBCPZYvfKj5C7olznccmhfz64FHGbQ/RrAvPd2zcO5SmzAI16sAeO
+         Oth0cMOPWWq10MGkddvbSPGe9Gt6keeHudc9tjEigOb7IIsgdJBqZZmyJZv+IuJegqTB
+         V510og7M7v9sYy+7uuRh6cHePnH0TqpjmiSkY/sJzeSzQkje27ywc58fVVT2J2ultAcr
+         Evd+jQgBzEHK5Nv8TD5698DzcLI84XGx1IkCF9qnasTnmzgN7sSywiAcQ3ijqYIkbWHp
+         QU+g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kotisdesign.com header.s=s1 header.b=lry0tfyQ;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=vUuVLkvA;
+       spf=pass (google.com: domain of bounces+994471-95bf-dharmakumar338=gmail.com@em5882.kotisdesign.com designates 168.245.101.201 as permitted sender) smtp.mailfrom="bounces+994471-95bf-dharmakumar338=gmail.com@em5882.kotisdesign.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=kotisdesign.com
+Return-Path: <bounces+994471-95bf-dharmakumar338=gmail.com@em5882.kotisdesign.com>
+Received: from o1.ptr2482.kotisdesign.com (o1.ptr2482.kotisdesign.com. [168.245.101.201])
+        by mx.google.com with ESMTPS id h13si18931471pjg.129.2021.11.12.19.53.15
+        for <dharmakumar338@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 12 Nov 2021 19:53:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+994471-95bf-dharmakumar338=gmail.com@em5882.kotisdesign.com designates 168.245.101.201 as permitted sender) client-ip=168.245.101.201;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kotisdesign.com header.s=s1 header.b=lry0tfyQ;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=vUuVLkvA;
+       spf=pass (google.com: domain of bounces+994471-95bf-dharmakumar338=gmail.com@em5882.kotisdesign.com designates 168.245.101.201 as permitted sender) smtp.mailfrom="bounces+994471-95bf-dharmakumar338=gmail.com@em5882.kotisdesign.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=kotisdesign.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kotisdesign.com;
+	h=from:subject:mime-version:x-feedback-id:to:content-type:
+	content-transfer-encoding;
+	s=s1; bh=ibKU5IQJQodTbSryxbgbTqOJ27e2JYzHIOlhpgozGUw=;
+	b=lry0tfyQhNrPUEIzJXpyFGqSL4PcHSz6k5ZbOKMuf0FsTxqpZD9GZA35C1H0MH2Jdsq3
+	H/INdT5fWG0nFEP2fg7rWmwBSfqAtVI5WfOBogSfB4QTkEvoAHi4kDmvqs2tMyTogaox1g
+	Y0QmtR7bDs1r1XwL2+2B3bUjYbncqCS+R9TMi32mAcMIXtO8xy1xsNB77HLC4vKqCctYMx
+	NLgbiAIfMedZ1cPp+M3WZRXjifIXUTTCqfKA/hUlb08+C7URAYZwXD7SVNLOxm9hbitr45
+	gWltyRRSO483uVuO/0RzXRBpfs4aFgyyAw3b4TIsSl34t7mP3ZJxdge9nfcJrS/Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=from:subject:mime-version:x-feedback-id:to:content-type:
+	content-transfer-encoding;
+	s=smtpapi; bh=ibKU5IQJQodTbSryxbgbTqOJ27e2JYzHIOlhpgozGUw=;
+	b=vUuVLkvA6W+UKRyvTlghUF1DR79t+/WDmVL+kftubHcozLfTlUXfo7tRyZzLNDjx1RGa
+	Z480I0riGqWNcjwSheHONcZbPg8a154CECkkn5hg/Y2Cfvs6LpUJUjJhFBrBsBJfWjMBPm
+	yURB0DawSkHQVbg9vGoGB1BSmWpdRYWA0=
+Received: by filterdrecv-7bf5c69d5-fb76v with SMTP id filterdrecv-7bf5c69d5-fb76v-1-618F36AB-7
+        2021-11-13 03:53:15.241880029 +0000 UTC m=+6240731.042577410
+Received: from kotisdesign.com (unknown)
+	by geopod-ismtpd-3-1 (SG)
+	with ESMTP id OZQiLWjCSEKSlGzUS7Nkrg
+	for <dharmakumar338@gmail.com>;
+	Sat, 13 Nov 2021 03:53:15.187 +0000 (UTC)
+Date: Sat, 13 Nov 2021 03:53:15 +0000 (UTC)
+From: Hacktoberfest 2021 Redemption Portal <hacktoberfest@kotisdesign.com>
+Message-ID: <618f36ab2a96b_5ffc2ac10e8c16cc6836b@ip-172-31-0-220.mail>
+Subject: Order Confirmation #3090890
+Mime-Version: 1.0
+X-Feedback-ID: 994471:SG
+X-SG-EID: 
+ =?us-ascii?Q?VEafeBkAQX=2F8TVnFKGvekCoBEbZCVm59Bjhq4E+ngpTc0w+ajaRyNMOgdFi7uR?=
+ =?us-ascii?Q?YZu=2FW32wbSx8OdTpgr5JN=2FrEvXEzOPHHWPy=2FWKn?=
+ =?us-ascii?Q?7ropnyRRJhOORzfrH7Xp73cajSyHUUmZ5bYtVT6?=
+ =?us-ascii?Q?66nk6oEbWot3zwkJyOToSdZ0K0sLKfWjcemiMgA?=
+ =?us-ascii?Q?g8rWv2xi8JroPk7CVsqYkMO+2w7q7XcZUmKRBt7?=
+ =?us-ascii?Q?7ARCCASJ6jQas0QiBWmd2UXp3m14Iinoc0iuR5f?=
+ =?us-ascii?Q?qx8tkQZViAchqSlnuGdLE9vsW7c9ez8V+v8vuwx?= =?us-ascii?Q?BxA=3D?=
+To: dharmakumar338@gmail.com
+X-Entity-ID: jyTr2XoshfyqlwC9qC1cbw==
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_618f36ab2a474_5ffc2ac10e8c16cc6824a";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_618f36ab2a474_5ffc2ac10e8c16cc6824a
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+=0D
+We received your order - thanks!=0D
+=0D
+ORDER #3090890=0D
+=0D
+Items may not ship immediately. See details below.=0D
+Shipping to:=0D
+Manoj Kumar=0D
+16, Alexandra Road, Wellawatte=0D
+Colombo 06,   00600=0D
+Sri Lanka=0D
+0767601447=0D
+=0D
+=0D
+Items:=0D
+    Hacktoberfest 2021 T-Shirt - Unisex / Linear  - Heathered Charcoal - XL=
+, Qty 1, $0.00 each=0D
+      Note for 1 item: You will receive an email once your t-shirt is shipp=
+ed. Due to ongoing COVID-related disruptions and supply chain constraints w=
+e cannot guarantee a ship date, but estimate that all t-shirts will be ship=
+ped by the end of 2021.=0D
+=0D
+=0D
+=0D
+=0D
+ORDER SUMMARY=0D
+Subtotal: $0.00=0D
+=0D
+=0D
+=0D
+=0D
+In addition to your t-shirt, you can also claim a special Hacktoberfest bad=
+ge on DEV. Find out more information on how to claim this on your Hacktober=
+fest profile.=0D
+=0D
+Want to help offset Hacktoberfest=E2=80=99s carbon footprint by planting a =
+tree as well? Visit Tree Nation to plant a tree in the DigitalOcean Forest:=
+ http://do.co/hacktoberfest-trees=0D
+=0D
+___________________________________________________________________________=
+__=0D
+=0D
+Customer Service  |  Kotis Design=0D
+customerservice@kotisdesign.com   p 206.466.1800   tf 888-GO-KOTIS=0D
+
+----==_mimepart_618f36ab2a474_5ffc2ac10e8c16cc6824a
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html>=0D
+<head>=0D
+</head>=0D
+=0D
+<body style=3D"font-family:Helvetica,Arial;">=0D
+=0D
+<p>We received your order - thanks!</p>=0D
+=0D
+<p style=3D"text-decoration:underline;">ORDER #3090890</p>=0D
+=0D
+<p>=0D
+    Items may not ship immediately. See delivery details below.=0D
+</p>=0D
+=0D
+<p>=0D
+ =20=0D
+<strong>Shipping To:</strong><br />=0D
+<div class=3D"display-address">=0D
+  Manoj Kumar<br />=0D
+  16, Alexandra Road, Wellawatte<br />=0D
+  Colombo 06,=0D
+ =20=0D
+  00600<br />=0D
+    Sri Lanka<br />=0D
+  0767601447=0D
+</div>=0D
+=0D
+</p>=0D
+=0D
+=0D
+<p>=0D
+    <table style=3D"border-collapse: collapse; font-family:'Helvetica', 'Ar=
+ial', 'sans-serif';">=0D
+      <thead>=0D
+        <th style=3D"text-align:left;margin-bottom:8px;">Items</th>=0D
+        <th style=3D"text-align:left;">Delivery Notes</th>=0D
+      </thead>=0D
+      <tbody>=0D
+          <tr>=0D
+            <td style=3D"border: 1px solid #999; padding: 8px 5px;">=0D
+                <ul style=3D"list-style: none; margin: 0px; padding: 0px;">=0D
+    <li>=0D
+      <b>&middot; Hacktoberfest 2021 T-Shirt - Unisex / Linear  - Heathered=
+ Charcoal - XL</b>, Qty 1, $0.00 each=0D
+    </li>=0D
+</ul>=0D
+            </td>=0D
+            <td style=3D"border: 1px solid #999; padding: 8px 5px;">=0D
+              You will receive an email once your t-shirt is shipped. Due t=
+o ongoing COVID-related disruptions and supply chain constraints we cannot =
+guarantee a ship date, but estimate that all t-shirts will be shipped by th=
+e end of 2021.=0D
+            </td>=0D
+          </tr>=0D
+      </tbody>=0D
+    </table>=0D
+</p>=0D
+=0D
+=0D
+=0D
+=0D
+  <p>=0D
+    <h4 style=3D"text-decoration:underline; margin-bottom: 10px;">=0D
+      Order Summary=0D
+    </h4>=0D
+    Subtotal: $0.00<br />=0D
+  </p>=0D
+=0D
+=0D
+=0D
+=0D
+<p><p>In addition to your t-shirt, you can also claim a special Hacktoberfe=
+st badge on DEV. Find out more information on how to claim this on your Hac=
+ktoberfest profile.</p>=0D
+=0D
+<p>Want to help offset Hacktoberfest=E2=80=99s carbon footprint by planting=
+ a tree as well? Visit Tree Nation to plant a tree in the DigitalOcean Fore=
+st: http://do.co/hacktoberfest-trees</p></p>=0D
+=0D
+<p style=3D"font-size: 8.5pt; color: #797979; font-family:'Arial','sans-ser=
+if';">=0D
+  <span style=3D"color: #c0c0c0;">=0D
+  ______________________________________________________________________=0D
+  </span>=0D
+  <br /><br />=0D
+=0D
+  <span style=3D"color: #ff8000;"><b>Customer Service</b></span>&nbsp;&nbsp=
+;|&nbsp;&nbsp;Kotis Design<br />=0D
+  <span style=3D"color: blue;"><a href=3D"mailto:customerservice@kotisdesig=
+n.com" target=3D"_blank">customerservice@kotisdesign.com</a></span>=0D
+  <span style=3D"color: #ff8000;"><b>&nbsp;&nbsp;p</b></span> 206.466.1800=0D
+  <span style=3D"color: #ff8000;"><b>&nbsp;&nbsp;tf</b></span> 888-GO-KOTIS=0D
+</p>=0D
+=0D
+=0D
+</body>=0D
+</html>=0D
+
+----==_mimepart_618f36ab2a474_5ffc2ac10e8c16cc6824a--
