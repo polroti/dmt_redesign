@@ -11,7 +11,6 @@ PreferredSizeWidget appBarLight(BuildContext context) {
     backgroundColor: Theme.of(context).brightness == Brightness.dark
         ? Colors.black
         : Colors.white,
-    // const Color.fromRGBO(161, 32, 26, 1),
     elevation: 0,
     title: Text(
       'Vehicle Information',
