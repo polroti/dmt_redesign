@@ -1,3 +1,6 @@
+import 'package:dmt_redesign/screens/home/widgets/ongoing_number_container.dart';
+import 'package:dmt_redesign/screens/home/widgets/revenue_status_container.dart';
+import 'package:dmt_redesign/screens/home/widgets/vehicle_details_container.dart';
 import 'package:dmt_redesign/ui-utils/appbar.dart';
 import 'package:dmt_redesign/ui-utils/config.dart';
 import 'package:flutter/material.dart';
@@ -42,10 +45,10 @@ Widget onGoingNumber(BuildContext context) {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  ongoingNumberWidget(context, 'ON'),
-                  ongoingNumberWidget(context, 'VD'),
-                  ongoingNumberWidget(context, 'RS'),
-                  
+                  ongoingNumberContainer(context),
+                 vehicleDetailsContainer(context),
+                 revenueStatusContainer(context),
+
                   //govtLabel()
                 ],
               ),
@@ -55,14 +58,12 @@ Widget onGoingNumber(BuildContext context) {
       ))
     ],
   );
-
-  // Figma Flutter Generator Group28Widget - GROUP
 }
 
 Widget ongoingNumberWidget(BuildContext context, String type) {
   return Expanded(
       child: Padding(
-    padding: const EdgeInsetsDirectional.fromSTEB(24, 0, 24, 36),
+    padding: const EdgeInsetsDirectional.all(0),
     child: GestureDetector(
       onTap: () {
         switch (type) {
@@ -87,10 +88,10 @@ Widget ongoingNumberWidget(BuildContext context, String type) {
                 child: Column(
                   children: [
                     Padding(
-                        padding: const EdgeInsets.only(top: 20),
+                        padding: const EdgeInsets.only(top: 0),
                         child: ImageIcon(
                           getCardIcon(type),
-                          size: 140,
+                          size: 100,
                           color: Theme.of(context).brightness == Brightness.dark
                               ? const Color.fromRGBO(255, 255, 255, 1)
                               : const Color.fromRGBO(161, 32, 26, 1),
@@ -98,7 +99,9 @@ Widget ongoingNumberWidget(BuildContext context, String type) {
                         //Image.asset('assets/images/Image5.png'),
                         ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 5),
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                      ),
                       child: Text(
                         getCardLabel(type),
                         textAlign: TextAlign.center,
@@ -137,7 +140,7 @@ Widget ongoingNumberWidget(BuildContext context, String type) {
 String getCardLabel(String type) {
   switch (type) {
     case 'ON':
-      return  'ONGOING NUMBER';
+      return 'ONGOING NUMBER';
     case 'VD':
       return 'VEHICLE DETAILS';
     case 'RS':
@@ -158,122 +161,101 @@ AssetImage getCardIcon(String type) {
   return const AssetImage('assets/images/Image4.png');
 }
 
-Widget govtLabel(){
+Widget govtLabel() {
   return Positioned(
-              top: 701,
-              left: 117,
-              child: Container(
-                  width: 141,
-                  height: 30,
-                  child: Stack(children: <Widget>[
-                    Positioned(
-                        top: 1,
-                        left: 0,
-                        child: Container(
-                            width: 19.834999084472656,
-                            height: 28.169031143188477,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('assets/images/Image2.png'),
-                                  fit: BoxFit.fitWidth),
-                            ))),
-                    Positioned(
-                        top: 0,
-                        left: 28,
-                        child: Container(
-                            width: 113,
-                            height: 30,
-                            child: Stack(children: <Widget>[
-                              Positioned(
-                                  top: 0,
-                                  left: 0,
-                                  child: Container(
-                                      width: 113,
-                                      height: 30,
-                                      child: Stack(children: <Widget>[
-                                        Positioned(
-                                            top: 0,
-                                            left: 0,
-                                            child: Container(
-                                                width: 113,
-                                                height: 30,
-                                                child: Stack(children: const <
-                                                    Widget>[
-                                                  Positioned(
-                                                      top: 23,
-                                                      left: 7,
-                                                      child: Text(
-                                                        'DEPARTMENT OF MOTOR TRAFFIC',
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                        style: TextStyle(
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    161,
-                                                                    32,
-                                                                    26,
-                                                                    1),
-                                                            fontFamily:
-                                                                'Roboto',
-                                                            fontSize: 6,
-                                                            letterSpacing:
-                                                                0 /*percentages not used in flutter. defaulting to zero*/,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            height: 1),
-                                                      )),
-                                                  Positioned(
-                                                      top: 11,
-                                                      left: 7,
-                                                      child: Text(
-                                                        'போக்குவரத்து திணைக்களம்.',
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                        style: TextStyle(
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    161,
-                                                                    32,
-                                                                    26,
-                                                                    1),
-                                                            fontFamily:
-                                                                'Noto Sans Sinhala',
-                                                            fontSize: 6,
-                                                            letterSpacing:
-                                                                0 /*percentages not used in flutter. defaulting to zero*/,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            height: 1),
-                                                      )),
-                                                  Positioned(
-                                                      top: 0,
-                                                      left: 0,
-                                                      child: Text(
-                                                        'මෝටර් රථ ප්‍රවාහන දෙපාර්තමේන්තුව  ',
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                        style: TextStyle(
-                                                            color:
-                                                                Color.fromRGBO(
-                                                                    161,
-                                                                    32,
-                                                                    26,
-                                                                    1),
-                                                            fontFamily:
-                                                                'Noto Sans Sinhala',
-                                                            fontSize: 6,
-                                                            letterSpacing:
-                                                                0 /*percentages not used in flutter. defaulting to zero*/,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            height: 1),
-                                                      )),
-                                                ]))),
-                                      ]))),
-                            ]))),
-                  ])));
-          
+      top: 701,
+      left: 117,
+      child: Container(
+          width: 141,
+          height: 30,
+          child: Stack(children: <Widget>[
+            Positioned(
+                top: 1,
+                left: 0,
+                child: Container(
+                    width: 19.834999084472656,
+                    height: 28.169031143188477,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/Image2.png'),
+                          fit: BoxFit.fitWidth),
+                    ))),
+            Positioned(
+                top: 0,
+                left: 28,
+                child: Container(
+                    width: 113,
+                    height: 30,
+                    child: Stack(children: <Widget>[
+                      Positioned(
+                          top: 0,
+                          left: 0,
+                          child: Container(
+                              width: 113,
+                              height: 30,
+                              child: Stack(children: <Widget>[
+                                Positioned(
+                                    top: 0,
+                                    left: 0,
+                                    child: Container(
+                                        width: 113,
+                                        height: 30,
+                                        child: Stack(children: const <Widget>[
+                                          Positioned(
+                                              top: 23,
+                                              left: 7,
+                                              child: Text(
+                                                'DEPARTMENT OF MOTOR TRAFFIC',
+                                                textAlign: TextAlign.left,
+                                                style: TextStyle(
+                                                    color: Color.fromRGBO(
+                                                        161, 32, 26, 1),
+                                                    fontFamily: 'Roboto',
+                                                    fontSize: 6,
+                                                    letterSpacing:
+                                                        0 /*percentages not used in flutter. defaulting to zero*/,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    height: 1),
+                                              )),
+                                          Positioned(
+                                              top: 11,
+                                              left: 7,
+                                              child: Text(
+                                                'போக்குவரத்து திணைக்களம்.',
+                                                textAlign: TextAlign.left,
+                                                style: TextStyle(
+                                                    color: Color.fromRGBO(
+                                                        161, 32, 26, 1),
+                                                    fontFamily:
+                                                        'Noto Sans Sinhala',
+                                                    fontSize: 6,
+                                                    letterSpacing:
+                                                        0 /*percentages not used in flutter. defaulting to zero*/,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    height: 1),
+                                              )),
+                                          Positioned(
+                                              top: 0,
+                                              left: 0,
+                                              child: Text(
+                                                'මෝටර් රථ ප්‍රවාහන දෙපාර්තමේන්තුව  ',
+                                                textAlign: TextAlign.left,
+                                                style: TextStyle(
+                                                    color: Color.fromRGBO(
+                                                        161, 32, 26, 1),
+                                                    fontFamily:
+                                                        'Noto Sans Sinhala',
+                                                    fontSize: 6,
+                                                    letterSpacing:
+                                                        0 /*percentages not used in flutter. defaulting to zero*/,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    height: 1),
+                                              )),
+                                        ]))),
+                              ]))),
+                    ]))),
+          ])));
 }
