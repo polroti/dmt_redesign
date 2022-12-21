@@ -2,7 +2,6 @@ import 'package:dmt_redesign/screens/home/widgets/ongoing_number_container.dart'
 import 'package:dmt_redesign/screens/home/widgets/revenue_status_container.dart';
 import 'package:dmt_redesign/screens/home/widgets/vehicle_details_container.dart';
 import 'package:dmt_redesign/ui-utils/appbar.dart';
-import 'package:dmt_redesign/ui-utils/config.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -46,8 +45,8 @@ Widget onGoingNumber(BuildContext context) {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   ongoingNumberContainer(context),
-                 vehicleDetailsContainer(context),
-                 revenueStatusContainer(context),
+                  vehicleDetailsContainer(context),
+                  revenueStatusContainer(context),
 
                   //govtLabel()
                 ],
@@ -165,7 +164,7 @@ Widget govtLabel() {
   return Positioned(
       top: 701,
       left: 117,
-      child: Container(
+      child: SizedBox(
           width: 141,
           height: 30,
           child: Stack(children: <Widget>[
@@ -183,21 +182,21 @@ Widget govtLabel() {
             Positioned(
                 top: 0,
                 left: 28,
-                child: Container(
+                child: SizedBox(
                     width: 113,
                     height: 30,
                     child: Stack(children: <Widget>[
                       Positioned(
                           top: 0,
                           left: 0,
-                          child: Container(
+                          child: SizedBox(
                               width: 113,
                               height: 30,
                               child: Stack(children: <Widget>[
                                 Positioned(
                                     top: 0,
                                     left: 0,
-                                    child: Container(
+                                    child: SizedBox(
                                         width: 113,
                                         height: 30,
                                         child: Stack(children: const <Widget>[
