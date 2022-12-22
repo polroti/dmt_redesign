@@ -28,15 +28,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'DMT Information App',
-      theme: ThemeData(
-         brightness: Brightness.light,
-      ),
-      themeMode: currentTheme.currentTheme(),
-      darkTheme: ThemeData.dark(),
-      home: const HomePage(),
+      // theme: ThemeData(
+      //    brightness: Brightness.light,
+      // ),
+      // themeMode: currentTheme.currentTheme(),
+       darkTheme: ThemeData.dark(),
+      home: HomePage(),
     );
   }
 }
