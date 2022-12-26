@@ -18,7 +18,7 @@ class _OngoingNumberPageState extends State<OngoingNumberPage> {
     "assets/icons/land_vehicle.png",
     "assets/icons/land_vehicle_small.png",
     "assets/icons/lorry_trailer_bowser.png",
-    "assets/icons/motor_cycle.ong",
+    "assets/icons/motor_cycle.png",
     "assets/icons/motor_hearse.png",
     "assets/icons/motor_lorry_commercial.png",
     "assets/icons/trycicle_van.png",
@@ -68,7 +68,7 @@ class _OngoingNumberPageState extends State<OngoingNumberPage> {
     "LORRY TRAILER BOWSER",
     "MOTOR CYCLE",
     "MOTOR HEARSE",
-    "MOTOR LORRY (COMMERCIAL)"
+    "MOTOR LORRY (COMMERCIAL)",
     "MOTOR TRICYCLE VAN",
     "NON AGRICULTURAL LAND",
     "PRIME MOVER",
@@ -83,35 +83,52 @@ class _OngoingNumberPageState extends State<OngoingNumberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Ongoing Number"),
-        backgroundColor: Colors.red.shade900,
-      ),
-      body: ListView.separated(
+      // appBar: AppBar(
+
+      //   title: const Text("Ongoing Numbers", style: TextStyle(color: Colors.white),),
+      // //  backgroundColor:Colors.white,
+      //   actions: const [
+      //     Padding(
+      //       padding: EdgeInsets.all(8.0),
+      //       child: Icon(Icons.refresh),
+      //     )
+      //   ],
+      // ),
+      body: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
           itemBuilder: (BuildContext context, int index) {
             return SizedBox(
-              child: Card(
-                elevation: 10,
-                child: ListTile(
-                  leading: Image.asset(
-                    icons[index],
-                    scale: 1.0,
-                    height: 48.0,
-                    width: 48.0,
-                  ),
-                  title: Text(
-                    licenseNumbers[index],
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text(vehicleType[index]),
-                ),
+                child: Card(
+              elevation: 10,
+              child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        vehicleType[index],
+                        style: const TextStyle(fontSize: 10),
+                        textAlign: TextAlign.center,
+                      ),
+                      Image.asset(
+                        icons[index],
+                        scale: 0.5,
+                        height: 48.0,
+                        width: 48.0,
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                      ),
+                      Text(
+                        licenseNumbers[index],
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                    ]),
               ),
-            );
+            ));
           },
-          separatorBuilder: (BuildContext context, int index) => SizedBox(
-                height: MediaQuery.of(context).size.height / 150,
-              ),
-          itemCount: 10),
+          itemCount: vehicleType.length),
     );
   }
 }
