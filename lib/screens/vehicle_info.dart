@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class VehicleInfoPage extends StatefulWidget {
   const VehicleInfoPage({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //master column
+        //master column
         body: Column(
       children: [
         Form(
@@ -77,9 +78,37 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                   ),
                 ),
               ],
-            ))
+            )),
 
         //info card
+        Visibility(
+            visible: true,
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              child: Column(children: [
+                ListTile(
+                  leading:  Image.asset(
+                       "assets/icons/car.png",
+                        scale: 0.5,
+                        height: 48.0,
+                        width: 48.0,
+                        color: Theme.of(context).brightness == Brightness.light
+                            ? Colors.black
+                            : Colors.white,
+                      ),
+                  title: const Text('Suzuki Wagon R'),
+                  subtitle: const Text(
+                    'MOTOR CAR',
+                  
+                  ),
+                ),
+                   const ListTile(
+                  leading:  FaIcon(FontAwesomeIcons.accusoft),
+                  title: Text('Manoj Kumar'),
+                 
+                )
+              ]),
+            ))
       ],
     ));
   }
