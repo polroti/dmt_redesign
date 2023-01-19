@@ -83,31 +83,61 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
         //info card
         Visibility(
             visible: true,
-            child: Card(
-              clipBehavior: Clip.antiAlias,
-              child: Column(children: [
-                ListTile(
-                  leading:  Image.asset(
-                       "assets/icons/car.png",
-                        scale: 0.5,
-                        height: 48.0,
-                        width: 48.0,
-                        color: Theme.of(context).brightness == Brightness.light
-                            ? Colors.black
-                            : Colors.white,
-                      ),
-                  title: const Text('Suzuki Wagon R'),
-                  subtitle: const Text(
-                    'MOTOR CAR',
-                  
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                clipBehavior: Clip.antiAlias,
+                child: Column(children: [
+                  ListTile(
+                    leading:  Image.asset(
+                         "assets/icons/car.png",
+                          scale:1,
+                          height: 40.0,
+                          width: 40.0,
+                          color: Theme.of(context).brightness == Brightness.light
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                    title: const Text('Suzuki Wagon R'),
+                    subtitle: const Text(
+                      'MOTOR CAR',
+                    
+                    ),
                   ),
-                ),
+                     const ListTile(
+                    leading:  FaIcon(FontAwesomeIcons.accusoft),
+                    title: Text('Manoj Kumar'),
+                   
+                  ),
                    const ListTile(
-                  leading:  FaIcon(FontAwesomeIcons.accusoft),
-                  title: Text('Manoj Kumar'),
+                    leading:  FaIcon(FontAwesomeIcons.car),
+                    title: Text('suzuki'),
+                   
+                  ),
+                    const ListTile(
+                    leading:  Icon(Icons.star),
+                    title: Text('Wagon R Stingray X'),
+                   
+                  ),
+                    const ListTile(
+                    leading:  Icon(Icons.calendar_month),
+                    title: Text('2018'),
+                   
+                  ),
+                    const ListTile(
+                    leading:  FaIcon(FontAwesomeIcons.gasPump,size: 18,),
+                    title: Text('Petrol'),
+                   
+                  )
+                  ,
+                  const Divider(),
+          const ListTile(
+                 // leading:  Icon(Icons.star),
+                  title: Text('Revenue License Status : Active'),
                  
                 )
-              ]),
+                ]),
+              ),
             ))
       ],
     ));
