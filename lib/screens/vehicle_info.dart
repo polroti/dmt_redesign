@@ -89,53 +89,48 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                 clipBehavior: Clip.antiAlias,
                 child: Column(children: [
                   ListTile(
-                    leading:  Image.asset(
-                         "assets/icons/car.png",
-                          scale:1,
-                          height: 40.0,
-                          width: 40.0,
-                          color: Theme.of(context).brightness == Brightness.light
-                              ? Colors.black
-                              : Colors.white,
-                        ),
+                    leading: Image.asset(
+                      "assets/icons/car.png",
+                      scale: 1,
+                      height: 40.0,
+                      width: 40.0,
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.black
+                          : Colors.white,
+                    ),
                     title: const Text('Suzuki Wagon R'),
                     subtitle: const Text(
                       'MOTOR CAR',
-                    
                     ),
                   ),
-                     const ListTile(
-                    leading:  FaIcon(FontAwesomeIcons.accusoft),
+                  const ListTile(
+                    leading: FaIcon(FontAwesomeIcons.accusoft),
                     title: Text('Manoj Kumar'),
-                   
                   ),
-                   const ListTile(
-                    leading:  FaIcon(FontAwesomeIcons.car),
+                  const ListTile(
+                    leading: FaIcon(FontAwesomeIcons.car),
                     title: Text('suzuki'),
-                   
                   ),
-                    const ListTile(
-                    leading:  Icon(Icons.star),
+                  const ListTile(
+                    leading: Icon(Icons.star),
                     title: Text('Wagon R Stingray X'),
-                   
                   ),
-                    const ListTile(
-                    leading:  Icon(Icons.calendar_month),
+                  const ListTile(
+                    leading: Icon(Icons.calendar_month),
                     title: Text('2018'),
-                   
                   ),
-                    const ListTile(
-                    leading:  FaIcon(FontAwesomeIcons.gasPump,size: 18,),
+                  const ListTile(
+                    leading: FaIcon(
+                      FontAwesomeIcons.gasPump,
+                      size: 18,
+                    ),
                     title: Text('Petrol'),
-                   
-                  )
-                  ,
+                  ),
                   const Divider(),
-          const ListTile(
-                 // leading:  Icon(Icons.star),
-                  title: Text('Revenue License Status : Active'),
-                 
-                )
+                  const ListTile(
+                    // leading:  Icon(Icons.star),
+                    title: Text('Revenue License Status : Active'),
+                  )
                 ]),
               ),
             ))

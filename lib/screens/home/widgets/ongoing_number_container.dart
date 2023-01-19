@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 Widget ongoingNumberContainer(BuildContext context) {
   return GestureDetector(
     onTap: () {
-       Navigator.push(
+      Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const OngoingNumberPage()),
       );

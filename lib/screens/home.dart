@@ -37,7 +37,6 @@ class _HomeWidgetState extends State<HomePage> {
       appBar: appBarLight(context),
       body: bottomTabs.elementAt(currentTabIndex),
       bottomNavigationBar: BottomNavigationBar(
-        
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
           elevation: 10,
