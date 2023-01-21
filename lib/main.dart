@@ -30,10 +30,11 @@ class _MyAppState extends State<MyApp> {
       title: 'DMT Information App',
       theme: ThemeData(
         primarySwatch: mycolor,
-        brightness: Brightness.light,
+        //brightness: Brightness.dark,
+        iconTheme: const IconThemeData(color: Colors.purpleAccent)
       ),
       // themeMode: currentTheme.currentTheme(),
-      darkTheme: ThemeData.dark(),
+      //darkTheme: ThemeData.dark(),
       home: const HomePage(),
     );
   }

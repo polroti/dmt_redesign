@@ -16,12 +16,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomePage> {
-  int currentTabIndex = 0;
+  int currentTabIndex = 1;
 
   List<Widget> bottomTabs = <Widget>[
     const OngoingNumberPage(),
     const VehicleInfoPage(),
-    const RevenueLicensePage(),
+ //   const RevenueLicensePage(),
     const SettingsPage()
   ];
   onTapped(int index) {
@@ -37,6 +37,9 @@ class _HomeWidgetState extends State<HomePage> {
       appBar: appBarLight(context),
       body: bottomTabs.elementAt(currentTabIndex),
       bottomNavigationBar: BottomNavigationBar(
+        selectedIconTheme:  IconThemeData(color: Color.fromRGBO(161, 32, 26, 1)),
+        selectedItemColor: Color.fromRGBO(161, 32, 26, 1),
+
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
           elevation: 10,
@@ -57,10 +60,10 @@ class _HomeWidgetState extends State<HomePage> {
                   Icons.info_outline,
                 )),
             BottomNavigationBarItem(
-                label: "Revenue License",
-                activeIcon: Icon(Icons.fact_check),
+                label: "Settings",
+                activeIcon: Icon(Icons.settings),
                 icon: Icon(
-                  Icons.fact_check_outlined,
+                  Icons.settings_outlined,
                 )),
             // BottomNavigationBarItem(
             //     label: "Settings",

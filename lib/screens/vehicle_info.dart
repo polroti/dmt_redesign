@@ -12,6 +12,8 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController licenseNumberController = TextEditingController();
   bool isLicensePlateEmpty = true;
+  bool shouldCardBeShown = false;
+  bool submitBtn = true;
 
   @override
   Widget build(BuildContext context) {
@@ -61,18 +63,43 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      ElevatedButton(
-                        onPressed: !isLicensePlateEmpty
-                            ? () {
-                                if (_formKey.currentState!.validate()) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text('Processing Data')),
-                                  );
+                      Visibility(
+                        visible: submitBtn,
+                        child: ElevatedButton.icon(
+
+                          icon: const Icon(Icons.search),
+                          onPressed: !isLicensePlateEmpty
+                              ? () {
+                                  if (_formKey.currentState!.validate()) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          behavior: SnackBarBehavior.floating,
+                                          content: Text('Processing Data')),
+                                    );
+                                    setState(() {
+                                      shouldCardBeShown = true;
+                                      submitBtn = false;
+                                    });
+                                  }
                                 }
-                              }
-                            : null,
-                        child: Text('Submit'.toUpperCase()),
+                              : null,
+                          label: Text('Submit'.toUpperCase()),
+                        ),
+                      ),
+                      Visibility(
+                        visible: !submitBtn,
+                        child: ElevatedButton.icon(
+                          icon: Icon(Icons.refresh),
+                          onPressed: () {
+                            licenseNumberController.clear();
+                            setState(() {
+                              isLicensePlateEmpty = true;
+                              shouldCardBeShown = false;
+                              submitBtn = true;
+                            });
+                          },
+                          label: Text('New Query'.toUpperCase()),
+                        ),
                       ),
                     ],
                   ),
@@ -82,7 +109,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
 
         //info card
         Visibility(
-            visible: true,
+            visible: shouldCardBeShown,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
