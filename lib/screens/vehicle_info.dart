@@ -1,3 +1,4 @@
+import 'package:dmt_redesign/data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -66,7 +67,6 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                       Visibility(
                         visible: submitBtn,
                         child: ElevatedButton.icon(
-
                           icon: const Icon(Icons.search),
                           onPressed: !isLicensePlateEmpty
                               ? () {
