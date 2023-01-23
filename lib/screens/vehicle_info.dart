@@ -16,6 +16,8 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
   bool shouldCardBeShown = false;
   bool submitBtn = true;
 
+  VehicleInfoEntity vehicleInfoEntity = VehicleInfoEntity("", "", "", "", "", "", "", "", "");
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,15 +73,64 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                           onPressed: !isLicensePlateEmpty
                               ? () {
                                   if (_formKey.currentState!.validate()) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          behavior: SnackBarBehavior.floating,
-                                          content: Text('Processing Data')),
-                                    );
-                                    setState(() {
-                                      shouldCardBeShown = true;
-                                      submitBtn = false;
-                                    });
+                                    // ScaffoldMessenger.of(context).showSnackBar(
+                                    //   const SnackBar(
+                                    //       behavior: SnackBarBehavior.floating,
+                                    //       content: Text('Processing Data')),
+                                    // );
+
+                                    String licenseNo = licenseNumberController
+                                        .text
+                                        .replaceAll(" ", "");
+                                    bool isMatched = false;
+
+                                    if (licenseNo.contains('ශ්‍රී')) {
+                                      RegExp regexForSri =
+                                          RegExp('[0-9]+ශ්‍රී[0-9]+');
+
+                                      if (regexForSri.hasMatch(licenseNo)) {
+                                        isMatched = true;
+                                      }
+                                    } else {
+                                      RegExp normalRegex =
+                                          RegExp('[A-Za-z0-9]+-[0-9]+');
+
+                                      if (normalRegex.hasMatch(licenseNo)) {
+                                        //continue
+                                        isMatched = true;
+                                      }
+                                    }
+
+                                    if (!isMatched) {
+                                      showDialog(
+                                        context: context,
+                                        builder: (ctx) => AlertDialog(
+                                          title: const Text("Error"),
+                                          content: const Text(
+                                              "hariyata type carapan whotto"),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(ctx).pop();
+                                              },
+                                              child: const Text("Ha ithin"),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else {
+                                      for (var i = 0; i < all.length; i++) {
+                                        if (all[i].licensNumber ==
+                                            licenseNo.toUpperCase()) {
+                                              vehicleInfoEntity = all[i];
+                                            }
+                                      }
+
+                                      setState(() {
+                                        shouldCardBeShown = true;
+                                        submitBtn = false;
+                                      });
+                                    }
                                   }
                                 }
                               : null,
@@ -89,7 +140,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                       Visibility(
                         visible: !submitBtn,
                         child: ElevatedButton.icon(
-                          icon: Icon(Icons.refresh),
+                          icon: const Icon(Icons.refresh),
                           onPressed: () {
                             licenseNumberController.clear();
                             setState(() {
@@ -125,18 +176,16 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                           ? Colors.black
                           : Colors.white,
                     ),
-                    title: const Text('Suzuki Wagon R'),
-                    subtitle: const Text(
-                      'MOTOR CAR',
-                    ),
+                    title: Text(vehicleInfoEntity.modelName),
+                    subtitle: Text(vehicleInfoEntity.type.toUpperCase()),
                   ),
-                  const ListTile(
-                    leading: FaIcon(FontAwesomeIcons.accusoft),
-                    title: Text('Manoj Kumar'),
+                   ListTile(
+                    leading:Icon(Icons.person, size: 32,),
+                    title: Text(vehicleInfoEntity.ownerName),
                   ),
-                  const ListTile(
-                    leading: FaIcon(FontAwesomeIcons.car),
-                    title: Text('suzuki'),
+                  ListTile(
+                    leading:const FaIcon(FontAwesomeIcons.car),
+                    title: Text(vehicleInfoEntity.make.toUpperCase()),
                   ),
                   const ListTile(
                     leading: Icon(Icons.star),
