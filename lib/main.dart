@@ -33,8 +33,8 @@ class _MyAppState extends State<MyApp> {
         //brightness: Brightness.dark,
         iconTheme: const IconThemeData(color: Colors.purpleAccent)
       ),
-      // themeMode: currentTheme.currentTheme(),
-      //darkTheme: ThemeData.dark(),
+      themeMode: currentTheme.currentTheme(),
+      darkTheme: ThemeData.dark(),
       home: const HomePage(),
     );
   }

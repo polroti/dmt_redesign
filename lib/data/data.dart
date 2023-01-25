@@ -21,23 +21,23 @@ class VehicleInfoEntity {
  ];
 
 //car
-VehicleInfoEntity cbb3077 = VehicleInfoEntity("Suzuki Wagon R X", "Motor Car",
-    "Manoj Kumar", "Suzuki", "Wagon R Stingray X", "2018", "Petrol", "Active","CBB-3077");
+VehicleInfoEntity cbb3077 = VehicleInfoEntity("Suzuki Wagon R", "Motor Car",
+    "Manoj Kumar", "Suzuki", "Suzuki Wagon R Stingray X", "2018", "Petrol", "Active","CBB-3077");
 
 VehicleInfoEntity jc3350 = VehicleInfoEntity("Honda Civic", "Motor Car",
     "Deshan Ekanayake", "Honda", "Honda Civic EK1", "2004", "Petrol", "Active","JC-3350");
 
 //bike
 VehicleInfoEntity bjb4078 = VehicleInfoEntity(
-    "Bajaj Xpulse",
+    "Honda Xpulse",
     "Motor Bike",
     "Muhammed Fazlan",
-    "Bajaj",
-    "Bajaj Xpulse 200T",
+    "Honda",
+    "Honda Xpulse 200T",
     "2020",
     "Petrol",
     "Active",
     "BJB-4078");
 
-VehicleInfoEntity bij2805 = VehicleInfoEntity("TVS Apache", "Motor Bike",
+VehicleInfoEntity bij2805 = VehicleInfoEntity("TVS Apache", "Motor  Bike",
     "Manoo Abhillash", "TVS", "TVS Apache 160", "2019", "Petrol", "Active","BIJ-2805");

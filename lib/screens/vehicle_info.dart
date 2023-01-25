@@ -16,7 +16,8 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
   bool shouldCardBeShown = false;
   bool submitBtn = true;
 
-  VehicleInfoEntity vehicleInfoEntity = VehicleInfoEntity("", "", "", "", "", "", "", "", "");
+  VehicleInfoEntity vehicleInfoEntity =
+      VehicleInfoEntity("", "", "", "", "", "", "", "", "");
 
   @override
   Widget build(BuildContext context) {
@@ -122,8 +123,8 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                                       for (var i = 0; i < all.length; i++) {
                                         if (all[i].licensNumber ==
                                             licenseNo.toUpperCase()) {
-                                              vehicleInfoEntity = all[i];
-                                            }
+                                          vehicleInfoEntity = all[i];
+                                        }
                                       }
 
                                       setState(() {
@@ -164,6 +165,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Card(
+                elevation: 10,
                 clipBehavior: Clip.antiAlias,
                 child: Column(children: [
                   ListTile(
@@ -173,39 +175,57 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                       height: 40.0,
                       width: 40.0,
                       color: Theme.of(context).brightness == Brightness.light
-                          ? Colors.black
+                          ? Theme.of(context).primaryColor
                           : Colors.white,
                     ),
-                    title: Text(vehicleInfoEntity.modelName),
-                    subtitle: Text(vehicleInfoEntity.type.toUpperCase()),
-                  ),
-                   ListTile(
-                    leading:Icon(Icons.person, size: 32,),
-                    title: Text(vehicleInfoEntity.ownerName),
+                    title: Text(vehicleInfoEntity.type),
+                    subtitle: const Text("Type"),
                   ),
                   ListTile(
-                    leading:const FaIcon(FontAwesomeIcons.car),
-                    title: Text(vehicleInfoEntity.make.toUpperCase()),
-                  ),
-                  const ListTile(
-                    leading: Icon(Icons.star),
-                    title: Text('Wagon R Stingray X'),
-                  ),
-                  const ListTile(
-                    leading: Icon(Icons.calendar_month),
-                    title: Text('2018'),
-                  ),
-                  const ListTile(
-                    leading: FaIcon(
-                      FontAwesomeIcons.gasPump,
-                      size: 18,
+                    leading: Icon(
+                      Icons.star,
+                      size: 32,
+                      color: Theme.of(context).primaryColor,
                     ),
-                    title: Text('Petrol'),
+                    title: Text(vehicleInfoEntity.modelName),
+                    subtitle:
+                        Text(vehicleInfoEntity.licensNumber.toUpperCase()),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.account_circle,
+                      size: 32,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    title: Text(vehicleInfoEntity.ownerName),
+                    subtitle: const Text("Owner"),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.help,size: 32, color: Theme.of(context).primaryColor,),
+                    title: Text(vehicleInfoEntity.fullModelName),
+                    subtitle: const Text("Make & Model"),
+                  ),
+                   ListTile(
+                    leading: Icon(Icons.calendar_month,size: 32, color: Theme.of(context).primaryColor,),
+                    title: Text(vehicleInfoEntity.year),
+                    subtitle: const Text("Year of Manufacture"),
+                  ),
+                   ListTile(
+                    leading: Padding(
+                      padding: const EdgeInsets.only(left:4.0),
+                      child: FaIcon(
+                        FontAwesomeIcons.gasPump,
+                        size: 28,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    title: Text(vehicleInfoEntity.fuelType),
+                    subtitle: const Text("Fuel Type"),
                   ),
                   const Divider(),
-                  const ListTile(
+                   ListTile(
                     // leading:  Icon(Icons.star),
-                    title: Text('Revenue License Status : Active'),
+                    title: Text("Revenue License Status : " + vehicleInfoEntity.revlicenseStatus),
                   )
                 ]),
               ),
