@@ -18,61 +18,69 @@ class HomePage extends StatefulWidget {
 class _HomeWidgetState extends State<HomePage> {
   int currentTabIndex = 1;
 
-  List<Widget> bottomTabs = <Widget>[
-    const OngoingNumberPage(),
-    const VehicleInfoPage(),
- //   const RevenueLicensePage(),
-    const SettingsPage()
+ final List<Widget> bottomTabs = <Widget>[
+    const OngoingNumberPage(
+      key: PageStorageKey('on'),
+    ),
+    const VehicleInfoPage(
+      key: PageStorageKey('vi'),
+    ),
+    const SettingsPage(
+      key: PageStorageKey('st'),
+    )
   ];
+
+
   onTapped(int index) {
     setState(() {
       currentTabIndex = index;
     });
   }
 
+  final PageStorageBucket bucket = PageStorageBucket();
+
+  Widget bottomNavigationBar(int currentTabIndex) {
+    return BottomNavigationBar(
+        selectedIconTheme:
+            const IconThemeData(color: Color.fromRGBO(161, 32, 26, 1)),
+        selectedItemColor: const Color.fromRGBO(161, 32, 26, 1),
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        elevation: 10,
+        iconSize: 32,
+        onTap: onTapped,
+        currentIndex: currentTabIndex,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              activeIcon: Icon(Icons.confirmation_number),
+              label: "Ongoing Number",
+              icon: Icon(
+                Icons.confirmation_number_outlined,
+              )),
+          BottomNavigationBarItem(
+              label: "Vehicle Details",
+              activeIcon: Icon(Icons.info),
+              icon: Icon(
+                Icons.info_outline,
+              )),
+          BottomNavigationBarItem(
+              label: "Settings",
+              activeIcon: Icon(Icons.settings),
+              icon: Icon(
+                Icons.settings_outlined,
+              )),
+        ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(title: const Text("Vehicle Information"),backgroundColor:  Colors.red.shade900,),
-      appBar: appBarLight(context),
-      body: bottomTabs.elementAt(currentTabIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedIconTheme:  IconThemeData(color: Color.fromRGBO(161, 32, 26, 1)),
-        selectedItemColor: Color.fromRGBO(161, 32, 26, 1),
-
-          showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          elevation: 10,
-          iconSize: 32,
-          onTap: onTapped,
-          currentIndex: currentTabIndex,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                activeIcon: Icon(Icons.confirmation_number),
-                label: "Ongoing Number",
-                icon: Icon(
-                  Icons.confirmation_number_outlined,
-                )),
-            BottomNavigationBarItem(
-                label: "Vehicle Details",
-                activeIcon: Icon(Icons.info),
-                icon: Icon(
-                  Icons.info_outline,
-                )),
-            BottomNavigationBarItem(
-                label: "Settings",
-                activeIcon: Icon(Icons.settings),
-                icon: Icon(
-                  Icons.settings_outlined,
-                )),
-            // BottomNavigationBarItem(
-            //     label: "Settings",
-            //     activeIcon: Icon(Icons.settings),
-            //     icon: Icon(
-            //       Icons.settings_outlined,
-            //     )),
-          ]),
-    );
+        appBar: appBarLight(context),
+        body: PageStorage(
+          child: bottomTabs[currentTabIndex],
+          bucket: bucket,
+        ),
+        bottomNavigationBar: bottomNavigationBar(currentTabIndex));
   }
 }
 

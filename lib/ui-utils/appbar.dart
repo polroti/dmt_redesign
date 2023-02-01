@@ -7,7 +7,7 @@ var menuItems = <String>['Language', 'Theme', 'Help', 'About'];
 
 PreferredSizeWidget appBarLight(BuildContext context) {
   return AppBar(
-    toolbarHeight: 70,
+ //   toolbarHeight: 70,
     backgroundColor: Theme.of(context).brightness == Brightness.dark
         ? Colors.black
         : Colors.white,
