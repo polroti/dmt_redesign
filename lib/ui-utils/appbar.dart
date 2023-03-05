@@ -1,13 +1,13 @@
 import 'package:dmt_redesign/ui-utils/config.dart';
 import 'package:flutter/material.dart';
 
-var menuItems = <String>['Language', 'Theme', 'Help','About'];
+var menuItems = <String>['Language', 'Theme', 'Help', 'About'];
 
 //light
 
 PreferredSizeWidget appBarLight(BuildContext context) {
   return AppBar(
-    toolbarHeight: 70,
+ //   toolbarHeight: 70,
     backgroundColor: Theme.of(context).brightness == Brightness.dark
         ? Colors.black
         : Colors.white,
@@ -33,7 +33,6 @@ PreferredSizeWidget appBarLight(BuildContext context) {
           onSelected: (item) {
             switch (item) {
               case 'Language':
-               
                 break;
 
               case 'Theme':
@@ -45,7 +44,15 @@ PreferredSizeWidget appBarLight(BuildContext context) {
                 break;
 
               case 'About':
-              showAboutDialog(context: context,applicationName: 'Vehicle Information App', applicationVersion: 'dev',applicationIcon: Image.asset('assets/images/Image4.png',height: 50,width: 50,));
+                showAboutDialog(
+                    context: context,
+                    applicationName: 'Vehicle Information App',
+                    applicationVersion: 'dev',
+                    applicationIcon: Image.asset(
+                      'assets/images/Image4.png',
+                      height: 50,
+                      width: 50,
+                    ));
                 break;
             }
           },
@@ -102,7 +109,7 @@ Widget getMenuItemIcon(String choice, BuildContext context) {
             : const Color.fromRGBO(161, 32, 26, 1),
       );
       break;
-      case 'About':
+    case 'About':
       icon = Icon(
         Icons.info,
         color: Theme.of(context).brightness == Brightness.dark
