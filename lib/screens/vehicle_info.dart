@@ -24,8 +24,8 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
     return Scaffold(
         //master column
         body: SingleChildScrollView(
-          child: Column(
-              children: [
+      child: Column(
+        children: [
           Form(
               key: _formKey,
               //form column
@@ -37,7 +37,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                   mainButton(context)
                 ],
               )),
-        
+
           //info card
           Visibility(
               visible: shouldCardBeShown,
@@ -51,20 +51,12 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                       ListTile(
                         dense: true,
                         //contentPadding: const EdgeInsets.only(left: 10,right: 10,bottom: 0),
-                        leading: Image.asset(
-                          "assets/icons/car.png",
-                          scale: 1,
-                          height: 40.0,
-                          width: 40.0,
-                          color: Theme.of(context).brightness == Brightness.light
-                              ? Theme.of(context).primaryColor
-                              : Colors.white,
-                        ),
+                        leading: getVehicleIcon(vehicleInfoEntity.type),
                         title: Text(vehicleInfoEntity.type),
                         subtitle: const Text("Type"),
                       ),
                       ListTile(
-                         dense: true,
+                        dense: true,
                         leading: Icon(
                           Icons.star,
                           size: 32,
@@ -75,7 +67,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                             Text(vehicleInfoEntity.licensNumber.toUpperCase()),
                       ),
                       ListTile(
-                         dense: true,
+                        dense: true,
                         leading: Icon(
                           Icons.account_circle,
                           size: 32,
@@ -85,7 +77,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                         subtitle: const Text("Owner"),
                       ),
                       ListTile(
-                         dense: true,
+                        dense: true,
                         leading: Icon(
                           Icons.help,
                           size: 32,
@@ -95,7 +87,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                         subtitle: const Text("Make & Model"),
                       ),
                       ListTile(
-                         dense: true,
+                        dense: true,
                         leading: Icon(
                           Icons.calendar_month,
                           size: 32,
@@ -105,7 +97,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                         subtitle: const Text("Year of Manufacture"),
                       ),
                       ListTile(
-                         dense: true,
+                        dense: true,
                         leading: Padding(
                           padding: const EdgeInsets.only(left: 4.0),
                           child: FaIcon(
@@ -119,7 +111,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                       ),
                       const Divider(),
                       ListTile(
-                         dense: true,
+                        dense: true,
                         // leading:  Icon(Icons.star),
                         title: Text("Revenue License Status : " +
                             vehicleInfoEntity.revlicenseStatus),
@@ -128,9 +120,9 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                   ),
                 ),
               ))
-              ],
-            ),
-        ));
+        ],
+      ),
+    ));
   }
 
   Widget mainButton(BuildContext context) {
@@ -229,7 +221,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
 
   Widget textField(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 1,bottom: 2,left: 8,right: 8),
+      padding: const EdgeInsets.only(top: 1, bottom: 2, left: 8, right: 8),
       child: TextFormField(
         onChanged: (value) {
           if (value.isEmpty) {
@@ -256,5 +248,41 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
         },
       ),
     );
+  }
+
+  Image getVehicleIcon(String type) {
+    switch (type) {
+      case 'Motor Car':
+        return Image.asset(
+          "assets/icons/car.png",
+          scale: 1,
+          height: 40.0,
+          width: 40.0,
+          color: Theme.of(context).brightness == Brightness.light
+              ? Theme.of(context).primaryColor
+              : Colors.white,
+        );
+      case 'Motor Bike':
+        return Image.asset(
+          "assets/icons/motor_cycle.png",
+          scale: 1,
+          height: 40.0,
+          width: 40.0,
+          color: Theme.of(context).brightness == Brightness.light
+              ? Theme.of(context).primaryColor
+              : Colors.white,
+        );
+
+      default:
+        return Image.asset(
+          "assets/icons/car.png",
+          scale: 1,
+          height: 40.0,
+          width: 40.0,
+          color: Theme.of(context).brightness == Brightness.light
+              ? Theme.of(context).primaryColor
+              : Colors.white,
+        );
+    }
   }
 }
