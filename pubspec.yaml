@@ -28,17 +28,17 @@ environment:
 # versions available, run `flutter pub outdated`.
 
 fonts:
-- family: Roboto
-  fonts:
-    - asset: assets/fonts/Roboto-Bold.ttf- 
-    - asset: assets/fonts/Roboto-Regular.ttf
-    - weight: 700
-    - weight: 400
-  
-    - family: NotoSansSinhala
-      fonts:
-    - asset: assets/fonts/Noto_Sans_Sinhala/static/NotoSansSinhala/NotoSansSinhala-Regular.ttf
-    - weight: 400
+  - family: Roboto
+    fonts:
+      - asset: assets/fonts/Roboto-Bold.ttf-
+      - asset: assets/fonts/Roboto-Regular.ttf
+      - weight: 700
+      - weight: 400
+
+      - family: NotoSansSinhala
+        fonts:
+      - asset: assets/fonts/Noto_Sans_Sinhala/static/NotoSansSinhala/NotoSansSinhala-Regular.ttf
+      - weight: 400
 
 dependencies:
   flutter_svg: ^1.0.3
