@@ -7,7 +7,7 @@ var menuItems = <String>['Language', 'Theme', 'Help', 'About'];
 
 PreferredSizeWidget appBarLight(BuildContext context) {
   return AppBar(
- //   toolbarHeight: 70,
+    //   toolbarHeight: 70,
     backgroundColor: Theme.of(context).brightness == Brightness.dark
         ? Colors.black
         : Colors.white,
@@ -21,63 +21,73 @@ PreferredSizeWidget appBarLight(BuildContext context) {
       ),
     ),
     actions: <Widget>[
-      PopupMenuButton(
-          icon: Icon(
-            Icons.more_vert,
-            color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.white
-                : const Color.fromRGBO(161, 32, 26, 1),
-          ),
+      IconButton(
+          onPressed: () => {currentTheme.switchTheme()},
+          icon: getThemeSwitcherIcon(context))
+      // PopupMenuButton(
+      //     icon: Icon(
+      //       Icons.dark_mode,
+      //       color: Theme.of(context).brightness == Brightness.dark
+      //           ? Colors.white
+      //           : const Color.fromRGBO(161, 32, 26, 1),
+      //     ),
 
-          // onCanceled: () => print('cancelled'),
-          onSelected: (item) {
-            switch (item) {
-              case 'Language':
-                break;
+      //     // onCanceled: () => print('cancelled'),
+      //     onSelected: (item) {
+      //       switch (item) {
+      //         case 'Language':
+      //           break;
 
-              case 'Theme':
-                currentTheme.switchTheme();
-                break;
+      //         case 'Theme':
+      //           currentTheme.switchTheme();
+      //           break;
 
-              case 'Help':
-                print('Help');
-                break;
+      //         case 'Help':
+      //           break;
 
-              case 'About':
-                showAboutDialog(
-                    context: context,
-                    applicationName: 'Vehicle Information App',
-                    applicationVersion: 'dev',
-                    applicationIcon: Image.asset(
-                      'assets/images/Image4.png',
-                      height: 50,
-                      width: 50,
-                    ));
-                break;
-            }
-          },
-          itemBuilder: (BuildContext context) {
-            return menuItems.map((String choice) {
-              return PopupMenuItem<String>(
-                  child: Row(children: [
-                    getMenuItemIcon(choice, context),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Text(
-                      choice.toUpperCase(),
-                      style: TextStyle(
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : const Color.fromRGBO(161, 32, 26, 1),
-                      ),
-                    )
-                  ]),
-                  value: choice);
-            }).toList();
-          })
+      //         case 'About':
+      //           showAboutDialog(
+      //               context: context,
+      //               applicationName: 'Vehicle Information App',
+      //               applicationVersion: 'dev',
+      //               applicationIcon: Image.asset(
+      //                 'assets/images/Image4.png',
+      //                 height: 50,
+      //                 width: 50,
+      //               ));
+      //           break;
+      //       }
+      //     },
+      //     itemBuilder: (BuildContext context) {
+      //       return menuItems.map((String choice) {
+      //         return PopupMenuItem<String>(
+      //             child: Row(children: [
+      //               getMenuItemIcon(choice, context),
+      //               const SizedBox(
+      //                 width: 15,
+      //               ),
+      //               Text(
+      //                 choice.toUpperCase(),
+      //                 style: TextStyle(
+      //                   color: Theme.of(context).brightness == Brightness.dark
+      //                       ? Colors.white
+      //                       : const Color.fromRGBO(161, 32, 26, 1),
+      //                 ),
+      //               )
+      //             ]),
+      //             value: choice);
+      //       }).toList();
+      //     })
     ],
   );
+}
+
+Widget getThemeSwitcherIcon(BuildContext context) {
+  if (Theme.of(context).brightness == Brightness.dark) {
+    return const Icon(Icons.light_mode);
+  }
+
+  return const Icon(Icons.dark_mode);
 }
 
 Widget getMenuItemIcon(String choice, BuildContext context) {
@@ -124,7 +134,6 @@ Widget getMenuItemIcon(String choice, BuildContext context) {
 void onMenuItemSelect(item) {
   switch (item) {
     case 'Language':
-      print('Language');
       break;
 
     case 'Theme':
@@ -132,7 +141,6 @@ void onMenuItemSelect(item) {
       break;
 
     case 'Help':
-      print('Help');
       break;
   }
 }

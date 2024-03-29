@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.dmt_redesign">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
             android:label="Vehicle Information"
             android:name="${applicationName}"

@@ -2,7 +2,6 @@ import 'package:dmt_redesign/screens/home/widgets/ongoing_number_container.dart'
 import 'package:dmt_redesign/screens/home/widgets/revenue_status_container.dart';
 import 'package:dmt_redesign/screens/home/widgets/vehicle_details_container.dart';
 import 'package:dmt_redesign/screens/ongoing_number.dart';
-import 'package:dmt_redesign/screens/revlicense.dart';
 import 'package:dmt_redesign/screens/settings.dart';
 import 'package:dmt_redesign/screens/vehicle_info.dart';
 import 'package:dmt_redesign/ui-utils/appbar.dart';
@@ -18,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomeWidgetState extends State<HomePage> {
   int currentTabIndex = 1;
 
- final List<Widget> bottomTabs = <Widget>[
+  final List<Widget> bottomTabs = <Widget>[
     const OngoingNumberPage(
       key: PageStorageKey('on'),
     ),
@@ -29,7 +28,6 @@ class _HomeWidgetState extends State<HomePage> {
       key: PageStorageKey('st'),
     )
   ];
-
 
   onTapped(int index) {
     setState(() {
@@ -135,7 +133,7 @@ Widget govtLabel() {
                           image: AssetImage('assets/images/Image2.png'),
                           fit: BoxFit.fitWidth),
                     ))),
-            Positioned(
+            const Positioned(
                 top: 0,
                 left: 28,
                 child: SizedBox(
@@ -155,7 +153,7 @@ Widget govtLabel() {
                                     child: SizedBox(
                                         width: 113,
                                         height: 30,
-                                        child: Stack(children: const <Widget>[
+                                        child: Stack(children: <Widget>[
                                           Positioned(
                                               top: 23,
                                               left: 7,

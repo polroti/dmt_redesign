@@ -29,10 +29,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'DMT Information App',
       theme: ThemeData(
-        primarySwatch: mycolor,
-        //brightness: Brightness.dark,
-        iconTheme: const IconThemeData(color: Colors.purpleAccent)
-      ),
+          primarySwatch: mycolor,
+          //brightness: Brightness.dark,
+          iconTheme: const IconThemeData(color: Colors.purpleAccent)),
       themeMode: currentTheme.currentTheme(),
       darkTheme: ThemeData.dark(),
       home: const HomePage(),
