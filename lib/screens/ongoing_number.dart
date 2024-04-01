@@ -1,3 +1,4 @@
+import 'package:dmt_redesign/ui-utils/config.dart';
 import 'package:flutter/material.dart';
 
 class OngoingNumberPage extends StatefulWidget {
@@ -8,6 +9,15 @@ class OngoingNumberPage extends StatefulWidget {
 }
 
 class _OngoingNumberPageState extends State<OngoingNumberPage> {
+  @override
+  void initState() {
+    currentTheme.addListener(() {
+      if (!mounted) return;
+      setState(() {});
+    });
+    super.initState();
+  }
+
   final List<String> icons = <String>[
     "assets/icons/ambulance.png",
     "assets/icons/car.png",
@@ -83,17 +93,6 @@ class _OngoingNumberPageState extends State<OngoingNumberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-
-      //   title: const Text("Ongoing Numbers", style: TextStyle(color: Colors.white),),
-      // //  backgroundColor:Colors.white,
-      //   actions: const [
-      //     Padding(
-      //       padding: EdgeInsets.all(8.0),
-      //       child: Icon(Icons.refresh),
-      //     )
-      //   ],
-      // ),
       body: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
@@ -110,15 +109,16 @@ class _OngoingNumberPageState extends State<OngoingNumberPage> {
                         style: const TextStyle(fontSize: 10),
                         textAlign: TextAlign.center,
                       ),
-                      Image.asset(
-                        icons[index],
-                        scale: 0.5,
-                        height: 48.0,
-                        width: 48.0,
-                        color: Theme.of(context).brightness == Brightness.light
-                            ? Colors.black
-                            : Colors.white,
-                      ),
+                      // Image.asset(
+                      //   icons[index],
+                      //   scale: 0.5,
+                      //   height: 48.0,
+                      //   width: 48.0,
+                      //   color: Theme.of(context).brightness == Brightness.light
+                      //       ? Colors.red
+                      //       : Colors.white,
+                      // ),
+                      getColorizedGridIcon(context, index),
                       Text(
                         licenseNumbers[index],
                         style: const TextStyle(
@@ -129,6 +129,21 @@ class _OngoingNumberPageState extends State<OngoingNumberPage> {
             ));
           },
           itemCount: vehicleType.length),
+    );
+  }
+
+  Widget getColorizedGridIcon(BuildContext context, int index) {
+    if (currentTheme.currentTheme() == ThemeMode.dark) {
+      return Image.asset(icons[index],
+          scale: 0.5, height: 48.0, width: 48.0, color: Colors.white);
+    }
+
+    return Image.asset(
+      icons[index],
+      scale: 0.5,
+      height: 48.0,
+      width: 48.0,
+      color: Colors.black,
     );
   }
 }

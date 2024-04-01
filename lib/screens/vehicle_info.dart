@@ -60,7 +60,10 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                         leading: Icon(
                           Icons.star,
                           size: 32,
-                          color: Theme.of(context).primaryColor,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.white,
                         ),
                         title: Text(vehicleInfoEntity.modelName),
                         subtitle:
@@ -71,7 +74,10 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                         leading: Icon(
                           Icons.account_circle,
                           size: 32,
-                          color: Theme.of(context).primaryColor,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.white,
                         ),
                         title: Text(vehicleInfoEntity.ownerName),
                         subtitle: const Text("Owner"),
@@ -81,7 +87,10 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                         leading: Icon(
                           Icons.help,
                           size: 32,
-                          color: Theme.of(context).primaryColor,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.white,
                         ),
                         title: Text(vehicleInfoEntity.fullModelName),
                         subtitle: const Text("Make & Model"),
@@ -91,7 +100,10 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                         leading: Icon(
                           Icons.calendar_month,
                           size: 32,
-                          color: Theme.of(context).primaryColor,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.white,
                         ),
                         title: Text(vehicleInfoEntity.year),
                         subtitle: const Text("Year of Manufacture"),
@@ -103,7 +115,10 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                           child: FaIcon(
                             FontAwesomeIcons.gasPump,
                             size: 28,
-                            color: Theme.of(context).primaryColor,
+                            color:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? Theme.of(context).primaryColor
+                                    : Colors.white,
                           ),
                         ),
                         title: Text(vehicleInfoEntity.fuelType),
@@ -184,7 +199,9 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
                           for (var i = 0; i < all.length; i++) {
                             if (all[i].licensNumber ==
                                 licenseNo.toUpperCase()) {
-                              vehicleInfoEntity = all[i];
+                              setState(() {
+                                vehicleInfoEntity = all[i];
+                              });
                             }
                           }
 
@@ -221,7 +238,7 @@ class _VehicleInfoPageState extends State<VehicleInfoPage> {
 
   Widget textField(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 1, bottom: 2, left: 8, right: 8),
+      padding: const EdgeInsets.only(top: 10, bottom: 2, left: 8, right: 8),
       child: TextFormField(
         onChanged: (value) {
           if (value.isEmpty) {

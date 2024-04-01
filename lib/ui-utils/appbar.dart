@@ -1,10 +1,6 @@
 import 'package:dmt_redesign/ui-utils/config.dart';
 import 'package:flutter/material.dart';
 
-var menuItems = <String>['Language', 'Theme', 'Help', 'About'];
-
-//light
-
 PreferredSizeWidget appBarLight(BuildContext context) {
   return AppBar(
     //   toolbarHeight: 70,
@@ -24,60 +20,6 @@ PreferredSizeWidget appBarLight(BuildContext context) {
       IconButton(
           onPressed: () => {currentTheme.switchTheme()},
           icon: getThemeSwitcherIcon(context))
-      // PopupMenuButton(
-      //     icon: Icon(
-      //       Icons.dark_mode,
-      //       color: Theme.of(context).brightness == Brightness.dark
-      //           ? Colors.white
-      //           : const Color.fromRGBO(161, 32, 26, 1),
-      //     ),
-
-      //     // onCanceled: () => print('cancelled'),
-      //     onSelected: (item) {
-      //       switch (item) {
-      //         case 'Language':
-      //           break;
-
-      //         case 'Theme':
-      //           currentTheme.switchTheme();
-      //           break;
-
-      //         case 'Help':
-      //           break;
-
-      //         case 'About':
-      //           showAboutDialog(
-      //               context: context,
-      //               applicationName: 'Vehicle Information App',
-      //               applicationVersion: 'dev',
-      //               applicationIcon: Image.asset(
-      //                 'assets/images/Image4.png',
-      //                 height: 50,
-      //                 width: 50,
-      //               ));
-      //           break;
-      //       }
-      //     },
-      //     itemBuilder: (BuildContext context) {
-      //       return menuItems.map((String choice) {
-      //         return PopupMenuItem<String>(
-      //             child: Row(children: [
-      //               getMenuItemIcon(choice, context),
-      //               const SizedBox(
-      //                 width: 15,
-      //               ),
-      //               Text(
-      //                 choice.toUpperCase(),
-      //                 style: TextStyle(
-      //                   color: Theme.of(context).brightness == Brightness.dark
-      //                       ? Colors.white
-      //                       : const Color.fromRGBO(161, 32, 26, 1),
-      //                 ),
-      //               )
-      //             ]),
-      //             value: choice);
-      //       }).toList();
-      //     })
     ],
   );
 }
@@ -129,18 +71,4 @@ Widget getMenuItemIcon(String choice, BuildContext context) {
       break;
   }
   return icon;
-}
-
-void onMenuItemSelect(item) {
-  switch (item) {
-    case 'Language':
-      break;
-
-    case 'Theme':
-      currentTheme.switchTheme();
-      break;
-
-    case 'Help':
-      break;
-  }
 }

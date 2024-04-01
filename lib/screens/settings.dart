@@ -16,24 +16,44 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          SegmentedButton<LanguageCodes>(
-            segments: const <ButtonSegment<LanguageCodes>>[
-              ButtonSegment<LanguageCodes>(
-                  value: LanguageCodes.en, label: Text("English")),
-              ButtonSegment<LanguageCodes>(
-                  value: LanguageCodes.ta, label: Text("Tamil")),
-              ButtonSegment<LanguageCodes>(
-                  value: LanguageCodes.si, label: Text("Sinhala")),
-            ],
-            selected: <LanguageCodes>{languageCodes},
-            onSelectionChanged: (Set<LanguageCodes> langselection) {
-              setState(() {
-                languageCodes = langselection.first;
-              });
-            },
+          const Padding(
+            padding: EdgeInsets.only(left: 5, top: 10),
+            child: ListTile(
+              leading: Icon(Icons.translate),
+              //style: ListTileStyle(),
+              title: Text('Change Language'),
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 5, top: 40),
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+            child: SegmentedButton<LanguageCodes>(
+              emptySelectionAllowed: false,
+              multiSelectionEnabled: false,
+              showSelectedIcon: false,
+              selectedIcon: const Icon(Icons.abc),
+              style: ButtonStyle(),
+              segments: const <ButtonSegment<LanguageCodes>>[
+                ButtonSegment<LanguageCodes>(
+                    value: LanguageCodes.en, label: Text("English")),
+                ButtonSegment<LanguageCodes>(
+                    value: LanguageCodes.ta, label: Text("தமிழ்")),
+                ButtonSegment<LanguageCodes>(
+                    value: LanguageCodes.si, label: Text("සිංහල")),
+              ],
+              selected: <LanguageCodes>{languageCodes},
+              onSelectionChanged: (Set<LanguageCodes> langselection) {
+                setState(() {
+                  languageCodes = langselection.first;
+                });
+              },
+            ),
+          ),
+          const Divider(
+            indent: 10,
+            endIndent: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 5, top: 20),
             child: ListTile(
               leading: const Icon(Icons.info),
               //style: ListTileStyle(),
@@ -54,17 +74,17 @@ class _SettingsPageState extends State<SettingsPage> {
           )
         ],
       ),
-      appBar: AppBar(
-        centerTitle: true,
-        //backgroundColor: Colors.transparent,
-        title: Text(
-          "Settings",
-          style: TextStyle(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white
-                  : Colors.black),
-        ),
-      ),
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   //backgroundColor: Colors.transparent,
+      //   title: Text(
+      //     "Language",
+      //     style: TextStyle(
+      //         color: Theme.of(context).brightness == Brightness.dark
+      //             ? Colors.white
+      //             : Colors.black),
+      //   ),
+      // ),
     );
   }
 }
