@@ -31,7 +31,6 @@ class _SettingsPageState extends State<SettingsPage> {
               multiSelectionEnabled: false,
               showSelectedIcon: false,
               selectedIcon: const Icon(Icons.abc),
-              style: ButtonStyle(),
               segments: const <ButtonSegment<LanguageCodes>>[
                 ButtonSegment<LanguageCodes>(
                     value: LanguageCodes.en, label: Text("English")),

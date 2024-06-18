@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomePage> {
-  int currentTabIndex = 1;
+  int currentTabIndex = 0;
 
   final List<Widget> bottomTabs = <Widget>[
     const OngoingNumberPage(

@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:dmt_redesign/ui-utils/config.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class OngoingNumberPage extends StatefulWidget {
   const OngoingNumberPage({Key? key}) : super(key: key);
@@ -9,13 +12,30 @@ class OngoingNumberPage extends StatefulWidget {
 }
 
 class _OngoingNumberPageState extends State<OngoingNumberPage> {
+  bool _isloading = true;
+  Timer? _timer;
+
+  void startTimer() {
+    _timer = Timer(const Duration(seconds: 2), () {
+      setState(() {
+        _isloading = false;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
   @override
   void initState() {
     currentTheme.addListener(() {
       if (!mounted) return;
-      setState(() {});
     });
     super.initState();
+    startTimer();
   }
 
   final List<String> icons = <String>[
@@ -93,42 +113,45 @@ class _OngoingNumberPageState extends State<OngoingNumberPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
-          itemBuilder: (BuildContext context, int index) {
-            return SizedBox(
-                child: Card(
-              elevation: 10,
-              child: Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        vehicleType[index],
-                        style: const TextStyle(fontSize: 10),
-                        textAlign: TextAlign.center,
-                      ),
-                      // Image.asset(
-                      //   icons[index],
-                      //   scale: 0.5,
-                      //   height: 48.0,
-                      //   width: 48.0,
-                      //   color: Theme.of(context).brightness == Brightness.light
-                      //       ? Colors.red
-                      //       : Colors.white,
-                      // ),
-                      getColorizedGridIcon(context, index),
-                      Text(
-                        licenseNumbers[index],
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                    ]),
-              ),
-            ));
-          },
-          itemCount: vehicleType.length),
+      body: Skeletonizer(
+        enabled: _isloading,
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
+            itemBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                  child: Card(
+                elevation: 10,
+                child: Center(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          vehicleType[index],
+                          style: const TextStyle(fontSize: 10),
+                          textAlign: TextAlign.center,
+                        ),
+                        // Image.asset(
+                        //   icons[index],
+                        //   scale: 0.5,
+                        //   height: 48.0,
+                        //   width: 48.0,
+                        //   color: Theme.of(context).brightness == Brightness.light
+                        //       ? Colors.red
+                        //       : Colors.white,
+                        // ),
+                        getColorizedGridIcon(context, index),
+                        Text(
+                          licenseNumbers[index],
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                      ]),
+                ),
+              ));
+            },
+            itemCount: vehicleType.length),
+      ),
     );
   }
 
