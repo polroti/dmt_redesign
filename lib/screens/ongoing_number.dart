@@ -131,16 +131,17 @@ class _OngoingNumberPageState extends State<OngoingNumberPage> {
                           style: const TextStyle(fontSize: 10),
                           textAlign: TextAlign.center,
                         ),
-                        // Image.asset(
-                        //   icons[index],
-                        //   scale: 0.5,
-                        //   height: 48.0,
-                        //   width: 48.0,
-                        //   color: Theme.of(context).brightness == Brightness.light
-                        //       ? Colors.red
-                        //       : Colors.white,
-                        // ),
-                        getColorizedGridIcon(context, index),
+                        Image.asset(
+                          icons[index],
+                          scale: 0.5,
+                          height: 48.0,
+                          width: 48.0,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Colors.red
+                                  : Colors.white,
+                        ),
+                        // getColorizedGridIcon(context, index),
                         Text(
                           licenseNumbers[index],
                           style: const TextStyle(
